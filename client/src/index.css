@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;800;900&family=Bungee:wght@400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(210, 11%, 15%);
+  --foreground: hsl(0, 0%, 100%);
+  --muted: hsl(210, 11%, 20%);
+  --muted-foreground: hsl(210, 11%, 65%);
+  --popover: hsl(210, 11%, 15%);
+  --popover-foreground: hsl(0, 0%, 100%);
+  --card: hsl(210, 11%, 18%);
+  --card-foreground: hsl(0, 0%, 100%);
+  --border: hsl(210, 11%, 25%);
+  --input: hsl(210, 11%, 25%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(210, 11%, 20%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --accent: hsl(210, 11%, 20%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(120, 100%, 50%);
+  --radius: 0.5rem;
+  
+  /* Custom colors for the clock app */
+  --clock-primary: hsl(207, 90%, 54%);
+  --clock-secondary: hsl(210, 11%, 25%);
+  --clock-accent: hsl(14, 86%, 58%);
+  --clock-success: hsl(122, 39%, 49%);
+  --clock-bg: hsl(210, 11%, 15%);
+  --neon-green: hsl(120, 100%, 50%);
+  --neon-green-bright: hsl(120, 100%, 60%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased text-foreground;
+    background: hsl(210, 11%, 15%);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+/* Custom clock styles with white text and neon green outline */
+.clock-display {
+  font-family: 'Orbitron', 'Bungee', monospace;
+  font-weight: 900;
+  font-feature-settings: 'tnum';
+  letter-spacing: 0.05em;
+  color: hsl(0, 0%, 100%);
+  -webkit-text-stroke: 3px hsl(120, 100%, 50%);
+  text-shadow: 
+    0 0 10px hsl(120, 100%, 50%),
+    0 0 20px hsl(120, 100%, 50%),
+    0 0 30px hsl(120, 100%, 50%),
+    0 0 40px hsl(120, 100%, 50%),
+    0 0 60px hsl(120, 100%, 50%),
+    0 0 80px hsl(120, 100%, 50%);
+  filter: drop-shadow(0 0 20px hsl(120, 100%, 50%));
+  animation: neon-pulse 2s ease-in-out infinite alternate;
+}
+
+.stopwatch-display {
+  font-family: 'Orbitron', 'Bungee', monospace;
+  font-weight: 900;
+  font-feature-settings: 'tnum';
+  letter-spacing: 0.05em;
+  color: hsl(0, 0%, 100%);
+  -webkit-text-stroke: 3px hsl(120, 100%, 50%);
+  text-shadow: 
+    0 0 10px hsl(120, 100%, 50%),
+    0 0 20px hsl(120, 100%, 50%),
+    0 0 30px hsl(120, 100%, 50%),
+    0 0 40px hsl(120, 100%, 50%),
+    0 0 60px hsl(120, 100%, 50%),
+    0 0 80px hsl(120, 100%, 50%);
+  filter: drop-shadow(0 0 20px hsl(120, 100%, 50%));
+  animation: neon-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes neon-pulse {
+  from {
+    -webkit-text-stroke: 1.5px hsl(120, 100%, 50%);
+    text-shadow: 
+      0 0 3px hsl(120, 100%, 50%),
+      0 0 8px hsl(120, 100%, 50%),
+      0 0 12px hsl(120, 100%, 50%);
+    filter: drop-shadow(0 0 8px hsl(120, 100%, 50%));
+  }
+  to {
+    -webkit-text-stroke: 1px hsl(120, 100%, 60%);
+    text-shadow: 
+      0 0 2px hsl(120, 100%, 50%),
+      0 0 6px hsl(120, 100%, 50%),
+      0 0 10px hsl(120, 100%, 50%);
+    filter: drop-shadow(0 0 6px hsl(120, 100%, 50%));
+  }
+}
+
+/* Orange glow for world clock */
+.world-clock-display {
+  color: white;
+  -webkit-text-stroke: 0.5px hsl(25, 100%, 50%);
+  text-shadow: 
+    0 0 2px hsl(25, 100%, 50%),
+    0 0 4px hsl(25, 100%, 50%);
+  filter: drop-shadow(0 0 3px hsl(25, 100%, 50%));
+  font-family: 'Orbitron', monospace;
+  font-weight: 900;
+}
+
+/* Smooth transitions for mode switching */
+.mode-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button hover effects */
+.btn-hover {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-hover:hover {
+  transform: translateY(-1px);
+}
+
+/* Fullscreen styles */
+.fullscreen-clock {
+  background: hsl(240, 10%, 3.9%);
+  color: hsl(0, 0%, 98%);
+}
+
+/* Ad placement zones - optimized for revenue */
+.ad-zone {
+  min-height: 90px;
+  background: linear-gradient(135deg, hsl(210, 40%, 98%) 0%, hsl(220, 14%, 96%) 100%);
+  border: 1px solid hsl(220, 13%, 91%);
+  border-radius: 8px;
+}
+
+.ad-zone-rectangle {
+  min-height: 250px;
+}
+
+.ad-zone-skyscraper {
+  min-height: 600px;
+}
